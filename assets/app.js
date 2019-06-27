@@ -69,6 +69,10 @@ $("#gifs-go-here").on("click", ".gif", function() {
      
     //   console.log("this: " + this)
   });
+
+  $("#clearbutton").on("click", function(){
+      $("#gifs-go-here").empty();
+  })
         
 
   function renderButtons() {
