@@ -1,87 +1,106 @@
-var gifs = ["The Matrix", "The Notebook", "Mr. Nobody", "The Lion King"];
 
+var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + gifs + "&api_key=BkaUZZWcFij6J7AoQj3WtPb1R2p9O6V9&limit=10";
+
+var gifs = ["matrix", "car", "simpsons", "vader", "dying-light", "catdog"];
+var numGifs = gifs.length
 
 function displayPics() {
 
-    var movie = $(this).attr("data-name");
-    var queryURL = "https://www.omdbapi.com/?t=" + movie + "&apikey=trilogy";
+    var gif = $(this).attr("data-name")
+    var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + gif + "&api_key=ZHv1n4TO6qsUkOBx4WQu9D5Z1IHLKVDE&limit=10";
 
-    // Creates AJAX call for the specific movie button being clicked
+    
+
     $.ajax({
       url: queryURL,
       method: "GET"
     }).then(function(response) {
       console.log(response) 
-      
-      
+      var imgData = response.data
+      for (var i = 0; i < imgData.length; i++){
+        var ratings = imgData[i].rating
+        console.log(ratings)
+        var newDiv = $("<div>")
+        newDiv.attr("class", "gifIMG")
+        var ratingText = $("<p>").text("Image Rated: " + ratings)
+        ratingText.attr("class", "ratingTXT")
+        var imgTag = $("<img>")
+        imgTag.attr("class", "gif")
+        imgTag.attr("src", imgData[i].images.fixed_height_still.url)
+        console.log(imgData[i].images.fixed_height.url)
+        newDiv.prepend(ratingText,imgTag)
 
-      var newMovie = $("<div>")
-      var title = $("<h1>").text(response.Title)
-      var rated = "Rated: " + response.Rated + "<br>"
-      var released = "Released: " + response.Released + "<br>"
-      var plot = "Plot: " + response.Plot + "<br>"
-      var posterURL = response.Poster
-      var poster = $("<img>").attr("src", posterURL)
-
-      for (var i = 0; i < response.Ratings.length; i++) {
-        console.log("Ratings 2: " + response.Ratings[i].Source + ": " + response.Ratings[i].Value)
-
-      var p = $("<p>")
-      var ratings = response.Ratings[i].Source + ": " + response.Ratings[i].Value + "<br>"
-      p.prepend(ratings)
-      console.log("Ratings var: " + ratings)
-      $("#movies-view").prepend(newMovie)
-      newMovie.append(ratings)
-      console.log("After ratings: " + ratings + ", Released: " + response.Released)
-      
+        $("#gifs-go-here").prepend(newDiv)
+        
       }
+      
 
-      $("#movies-view").prepend(newMovie)
-      newMovie.prepend(title,rated,released,plot,poster)
     });
 
-  };
-        
-  
+};
 
-  // Function for displaying movie data
+$("#gifs-go-here").on("click", ".gif", function() {
+    console.log("CLICKED")
+    console.log("1This: " + this)
+    
+    var src = $(this).attr("src");
+    if($(this).hasClass("playing")){
+        $(this).attr("src", src.replace(/\.gif/i, "_s.gif"))
+        $(this).removeClass("playing");
+    } else {
+        $(this).addClass("playing");
+        $(this).attr("src", src.replace(/\_s.gif/i, ".gif"))
+    }
+
+    // var imgURL = $(this).attr("src")
+
+    //   if (imgURL.includes("_s.gif")) {
+    //       imgURL = imgURL.replace("_s.gif", ".gif")
+    //   } else if (imgURL.includes(".gif")) {
+    //       imgURL = imgURL.replace(".gif", "_s.gif")
+    //   }
+
+    //   $(this).attr("src", imgURL)
+
+
+
+
+    //   console.log("imgURL: " + imgURL)
+     
+    //   console.log("this: " + this)
+  });
+        
+
   function renderButtons() {
 
-    // Deletes the movies prior to adding new movies
-    // (this is necessary otherwise you will have repeat buttons)
-    $("#buttons-view").empty();
-    // Loops through the array of movies
+
+    $("#buttons").empty();
+
     for (var i = 0; i < gifs.length; i++) {
 
-      // Then dynamicaly generates buttons for each movie in the array
-      // This code $("<button>") is all jQuery needs to create the beginning and end tag. (<button></button>)
+
       var a = $("<button>");
-      // Adds a class of movie to our button
-      a.addClass("movie");
-      // Added a data-attribute
+
+      a.addClass("gifButton");
+ 
       a.attr("data-name", gifs[i]);
-      // Provided the initial button text
+ 
       a.text(gifs[i]);
-      // Added the button to the buttons-view div
-      $("#buttons-view").append(a);
+
+      $("#buttons").append(a);
     }
   }
 
-  // This function handles events where the add movie button is clicked
-  $("#add-movie").on("click", function(event) {
-    event.preventDefault();
-    // This line of code will grab the input from the textbox
-    var image = $("#movie-input").val().trim();
 
-    // The movie from the textbox is then added to our array
-    movies.push(movie);
-
-    // Calling renderButtons which handles the processing of our movie array
+  $("#add-gifs").on("click", function(event) {
+    event.preventDefault(); 
+    var image = $("#search").val().trim();   
+    console.log(image)
+    gifs.push(image);
     renderButtons();
   });
 
-  // Adding click event listeners to all elements with a class of "movie"
-  $(document).on("click", ".movie", displayMovieInfo);
 
-  // Calling the renderButtons function to display the intial buttons
+  $(document).on("click", ".gifButton", displayPics);
+
   renderButtons();
