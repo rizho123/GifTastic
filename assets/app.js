@@ -1,7 +1,7 @@
 
 var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + gifs + "&api_key=BkaUZZWcFij6J7AoQj3WtPb1R2p9O6V9&limit=10";
 
-var gifs = ["matrix", "car", "simpsons", "vader", "dying-light", "catdog"];
+var gifs = ["matrix", "car", "simpsons", "vader", "thomas-train", "catdog", "panic"];
 var numGifs = gifs.length
 
 function displayPics() {
@@ -28,7 +28,7 @@ function displayPics() {
         imgTag.attr("class", "gif")
         imgTag.attr("src", imgData[i].images.fixed_height_still.url)
         console.log(imgData[i].images.fixed_height.url)
-        newDiv.prepend(ratingText,imgTag)
+        newDiv.prepend(imgTag,ratingText)
 
         $("#gifs-go-here").prepend(newDiv)
         
@@ -103,7 +103,6 @@ $("#gifs-go-here").on("click", ".gif", function() {
     gifs.push(image);
     renderButtons();
   });
-
 
   $(document).on("click", ".gifButton", displayPics);
 

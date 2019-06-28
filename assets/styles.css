@@ -1,0 +1,54 @@
+body {
+    font-family: Baloo;
+    width: 100%;
+    font-size: 20px;
+    background-image: url("./images/floor-tile.png");
+    background-attachment: fixed;
+}
+
+.container { 
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 2%;
+}
+
+h1 {
+    font-size: 6vw;
+    text-align: center;
+    margin-top: 5%;
+
+    margin-bottom: 5%;
+    padding: 15px;
+}
+
+h1 {
+    font-family: Baloo;
+    background: url("./images/rgb.gif");
+    background-position: center;
+    background-size: 50%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.gifButton {
+    background-color: #0099ff;
+    border: none;
+    border-radius: 15px;
+    color: #ffffff;
+    padding: 10px 20px;
+    margin: 4px 4px;
+}
+
+.gifButton:hover {
+    box-shadow: 0 0 7px #0099ff;
+    -webkit-transform: scale(1.1);
+    cursor: pointer;
+}
+
+form, #buttons, #clearbutton {
+    text-align: center;
+}
+
+label {
+    font-size: 20px;
+}
