@@ -73,7 +73,11 @@ $("#gifs-go-here").on("click", ".gif", function() {
   $("#clearbutton").on("click", function(){
       $("#gifs-go-here").empty();
   })
-        
+
+  $("#clearsubmit").on("click", function(){
+    $("#search").val("");
+  }) // alt way: type=reset
+    
 
   function renderButtons() {
 

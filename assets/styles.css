@@ -10,6 +10,7 @@ body {
     margin-left: 10%;
     margin-right: 10%;
     margin-top: 2%;
+    text-align: center;
 }
 
 h1 {
@@ -30,25 +31,83 @@ h1 {
     -webkit-text-fill-color: transparent;
 }
 
-.gifButton {
-    background-color: #0099ff;
+.gifButton, #clearbutton, #add-gifs, #clearsubmit, #search {
     border: none;
     border-radius: 15px;
-    color: #ffffff;
     padding: 10px 20px;
+    transition: 0.5s;
+}
+
+.gifButton {
+    background-color: #0099ff;
+    color: #ffffff;
     margin: 4px 4px;
+}
+
+#add-gifs, #clearsubmit {
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+#add-gifs {
+    background-color: #008366;
 }
 
 .gifButton:hover {
     box-shadow: 0 0 7px #0099ff;
-    -webkit-transform: scale(1.1);
+    -webkit-transform: scale(1.2);
+    transition: 0.5s;
     cursor: pointer;
 }
 
-form, #buttons, #clearbutton {
+#clearbutton {
+    background-color: #ffffff;
+    margin-top: 2%;
+    margin-bottom: 3%;
+    transition: 0.5s;
+    color: #000000;
+}
+
+#clearbutton, #add-gifs, #clearsubmit {
+    font-family: Molengo;
+    font-weight: bold;
+}
+
+#clearsubmit {
+    width: 39px;
     text-align: center;
+}
+
+#clearbutton:hover {
+    background-color: #ff0000;
+    color: #ffffff;
+    transition: 0.5s;
+    cursor: pointer;
+    box-shadow: 0 0 7px #ff0000;
+}
+
+#clearbutton:active, .gifButton:active {
+    background-color: #ffffff;
+    transition: 0.1s;
+}
+
+#add-gifs:hover, #search:hover, #clearsubmit:hover {
+    box-shadow: 0 0 7px #000000;
+}
+
+#search:after {
+    box-shadow: 0 0 7px #000000;
+}
+
+#add-gifs, #search {
+    margin-bottom: 2%;
 }
 
 label {
     font-size: 20px;
+}
+
+.form div {
+    -webkit-box-flex: 1;
+    flex: 1;
 }
