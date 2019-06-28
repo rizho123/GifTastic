@@ -6,6 +6,10 @@ body {
     background-attachment: fixed;
 }
 
+button:focus, input:focus {
+    outline: none;
+}
+
 .container { 
     margin-left: 10%;
     margin-right: 10%;
@@ -75,11 +79,6 @@ h1 {
     font-weight: bold;
 }
 
-#clearsubmit {
-    width: 39px;
-    text-align: center;
-}
-
 #clearbutton:hover {
     background-color: #ff0000;
     color: #ffffff;
@@ -95,6 +94,11 @@ h1 {
 
 #add-gifs:hover, #search:hover, #clearsubmit:hover {
     box-shadow: 0 0 7px #000000;
+}
+
+#add-gifs:active, #search:active, #clearsubmit:active {
+    box-shadow: 0 0 7px #00ffff;
+    transition: 0.1s;
 }
 
 #search:after {
