@@ -21,7 +21,6 @@ h1 {
     font-size: 7vw;
     text-align: center;
     margin-top: 5%;
-
     margin-bottom: 5%;
     padding: 15px;
 }
@@ -33,6 +32,7 @@ h1 {
     background-size: 50%;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 12px #ff009d6e;
 }
 
 .gifButton, #clearbutton, #add-gifs, #clearsubmit, #search {
@@ -113,3 +113,26 @@ label {
     font-size: 20px;
 }
 
+footer {
+    background-color: #00000057;
+    height: 40px;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    text-align: center;
+    color: white;
+    font-size: 20px;
+}
+
+.footer {
+    font-family: Baloo;
+    background: url("./images/rgb.gif");
+    background-size: 100%;
+    background-position: center;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+h6 {
+    margin-top: 11px;
+}
