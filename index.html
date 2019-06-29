@@ -12,20 +12,24 @@
         <link rel="icon" href="./assets/images/favicon.ico"> <!--Favicon needed-->
     </head>
     <body>
+        <div class = "top">
         <div class = "container">
             <h1>GIFTastic!</h1>
-        <div class = "form" style="display:flex; flex-direction: row; justify-content: center; align-items: center">
+        <div class="header">
+            <div class = "form" style="display:flex; flex-direction: row; justify-content: center; align-items: center">
             <form class = "searchbar" id = "searchbar">
             <label for = "search">Add a new topic! &rarr;</label>
             <input type="text" id="search" placeholder="Search">
             <input id="add-gifs" type="submit" value="Submit">
             <input id="clearsubmit" type="reset" value="Clear">
-        </form>
+            </form>
             <button id="clearbutton">Clear GIF's</button>
+            </div>
         </div>
         <div class = "maincontent">
             <div id="buttons"></div>
             <div id="gifs-go-here"></div>
+        </div>
         </div>
         </div>
         <footer>

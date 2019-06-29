@@ -99,6 +99,11 @@ $("#gifs-go-here").on("click", ".gif", function() {
     }
   }
 
+  $(window).scroll(function(){
+    $(".form").toggleClass("scrolling", $(window).scrollTop() > $(".header").offset().top);
+    $("#buttons").toggleClass("scrolling2", $(window).scrollTop() > $(".header").offset().top);
+  });
+
 
   $("#add-gifs").on("click", function(event) {
     event.preventDefault(); 

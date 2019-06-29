@@ -191,7 +191,10 @@ h1 {
 }
 
 label {
+    color: #ffffff;
     font-size: 20px;
+    -webkit-text-stroke-color: #000000;
+    -webkit-text-stroke-width: 1px;
 }
 
 footer {
@@ -217,10 +220,6 @@ h6 {
     margin-top: 11px;
 }
 
-#gifs-go-here {
-  
-}
-
 .gifIMG {
     background: #ffffff94;
     border: 1px solid #000000;
@@ -236,4 +235,18 @@ h6 {
     border-top-left-radius: 13px;
     border-top-right-radius: 13px;
     border-bottom: 1px solid #000000;
+}
+
+.scrolling, .scrolling2 {
+    position: fixed;
+}
+
+.scrolling {
+    top: 0;
+    margin-left: 20%;
+}
+
+.scrolling2 {
+    top: 70px;
+    margin-left: 30%;
 }
