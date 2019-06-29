@@ -11,10 +11,52 @@ button:focus, input:focus {
 }
 
 .container { 
-    margin-left: 10%;
-    margin-right: 10%;
+    margin-left: 5%;
+    margin-right: 5%;
     margin-top: 2%;
     text-align: center;
+}
+
+@keyframes pulse
+{
+  0% {
+    box-shadow: 0 0 0 0px rgba(0, 0, 0, 0.2);
+  }
+  100% {
+    box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0);
+  }
+}
+
+@keyframes pulse-big
+{
+  0% {
+    box-shadow: 0 0 0 0px rgba(0, 0, 0, 0.1);
+  }
+  100% {
+    box-shadow: 0 0 0 70px rgba(0, 0, 0, 0);
+  }
+}
+
+@keyframes glow-rgb
+{
+  0% {
+    box-shadow: 0 0 10px 2px rgb(255, 0, 0);
+  }
+  20% {
+    box-shadow: 0 0 10px 2px rgb(21, 255, 0);
+  }
+  40% {
+    box-shadow: 0 0 10px 2px rgb(25, 0, 255);
+  }
+  60% {
+    box-shadow: 0 0 10px 2px rgb(255, 0, 242);
+  }
+  80% {
+    box-shadow: 0 0 10px 2px rgb(238, 255, 0);
+  }
+  100% {
+    box-shadow: 0 0 10px 2px rgb(255, 0, 0);
+  }
 }
 
 h1 {
@@ -65,13 +107,17 @@ h1 {
 }
 
 #clearbutton {
-    background-color: #ffffff;
+    border: 1px solid #000000;
+    background-color: #ffffffd2;
     margin-top: 2%;
     margin-bottom: 3%;
-    margin-left: 2px;
+    margin-left: 6px;
     margin-right: 2px;
     transition: 0.5s;
     color: #000000;
+    animation: glow-rgb 5s infinite;
+} #clearbutton:after {
+    animation: glow-rgb 5s reverse;
 }
 
 #clearbutton, #add-gifs, #clearsubmit {
@@ -92,6 +138,10 @@ h1 {
     transition: 0.1s;
 }
 
+#search {
+    animation: pulse 0.5s infinite;
+}
+
 #add-gifs:hover, #search:hover, #clearsubmit:hover {
     box-shadow: 0 0 7px #000000;
 }
@@ -99,10 +149,6 @@ h1 {
 #add-gifs:active, #search:active, #clearsubmit:active {
     box-shadow: 0 0 7px #00ffff;
     transition: 0.1s;
-}
-
-#search:after {
-    box-shadow: 0 0 7px #000000;
 }
 
 #add-gifs, #search {
@@ -125,7 +171,7 @@ footer {
 }
 
 .footer {
-    font-family: Baloo;
+    font-family: Righteous;
     background: url("./images/rgb.gif");
     background-size: 100%;
     background-position: center;
@@ -135,4 +181,22 @@ footer {
 
 h6 {
     margin-top: 11px;
+}
+
+#gifs-go-here {
+  
+}
+
+.gifIMG {
+    border: 1px solid #000000;
+    border-radius: 15px;
+    width: 1%;
+    display: table;
+    float: left;
+    margin: 4px;
+}
+
+.gif {
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
 }

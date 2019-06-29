@@ -1,7 +1,7 @@
 
 var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + gifs + "&api_key=BkaUZZWcFij6J7AoQj3WtPb1R2p9O6V9&limit=10";
 
-var gifs = ["matrix", "car", "simpsons", "vader", "thomas-train", "catdog", "panic"];
+var gifs = ["matrix", "car", "simpsons", "storm trooper", "thomas-train", "catdog", "panic", "clown", "van", "chris farley"];
 var numGifs = gifs.length
 
 function displayPics() {
@@ -22,7 +22,7 @@ function displayPics() {
         console.log(ratings)
         var newDiv = $("<div>")
         newDiv.attr("class", "gifIMG")
-        var ratingText = $("<p>").text("Image Rated: " + ratings)
+        var ratingText = $("<p>").text("Rated: " + ratings)
         ratingText.attr("class", "ratingTXT")
         var imgTag = $("<img>")
         imgTag.attr("class", "gif")
