@@ -59,6 +59,43 @@ button:focus, input:focus {
   }
 }
 
+@keyframes glitch
+{
+    0% {
+        text-shadow: -8px 0px 0 #00f7ff;
+    }
+    10% {
+        text-shadow: 8px 0px 0 #e100ff;
+    }
+    20% {
+        text-shadow: -8px 0px 0 #00ff6a;
+    }
+    30% {
+        text-shadow: 8px 0px 0 #c8ff00;
+    }
+    40% {
+        text-shadow: -8px 0px 0 #6f00ff;
+    }
+    50% {
+        text-shadow: 8px 0px 0 #ff0000;
+    }
+    60% {
+        text-shadow: -8px 0px 0 #00f7ff00;
+    }
+    70% {
+        text-shadow: 8px 0px 0 #e100ff00;
+    }
+    80% {
+        text-shadow: -8px 0px 0 #00ff6a00;
+    }
+    90% {
+        text-shadow: 8px 0px 0 #c8ff0000;
+    }
+    100% {
+        text-shadow: -8px 0px 0 #6f00ff00;
+    }
+}
+
 h1 {
     font-size: 7vw;
     text-align: center;
@@ -116,8 +153,6 @@ h1 {
     transition: 0.5s;
     color: #000000;
     animation: glow-rgb 5s infinite;
-} #clearbutton:after {
-    animation: glow-rgb 5s reverse;
 }
 
 #clearbutton, #add-gifs, #clearsubmit {
@@ -172,11 +207,10 @@ footer {
 
 .footer {
     font-family: Righteous;
-    background: url("./images/rgb.gif");
-    background-size: 100%;
     background-position: center;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    animation: glitch 0.5s infinite;
+    -webkit-text-stroke-color: #000000;
+    -webkit-text-stroke-width: 0.5px;
 }
 
 h6 {
@@ -188,15 +222,18 @@ h6 {
 }
 
 .gifIMG {
+    background: #ffffff94;
     border: 1px solid #000000;
     border-radius: 15px;
     width: 1%;
     display: table;
     float: left;
     margin: 4px;
+    box-shadow: 1px 1px 5px #000000;
 }
 
 .gif {
-    border-top-left-radius: 15px;
-    border-top-right-radius: 15px;
+    border-top-left-radius: 13px;
+    border-top-right-radius: 13px;
+    border-bottom: 1px solid #000000;
 }
