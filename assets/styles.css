@@ -15,6 +15,7 @@ button:focus, input:focus {
     margin-right: 5%;
     margin-top: 2%;
     text-align: center;
+    height: 100%;
 }
 
 @keyframes pulse
@@ -249,4 +250,22 @@ h6 {
 .scrolling2 {
     top: 80px;
     width: 100%;
+}
+
+.header, .maincontent {
+    position: sticky;
+}
+
+.header {
+    top: 0;
+}
+
+.maincontent {
+    top: 100px;
+}
+
+.clearfix:after {
+    content: "";
+    display: table;
+    clear: both;
 }

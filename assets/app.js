@@ -99,10 +99,10 @@ $("#gifs-go-here").on("click", ".gif", function() {
     }
   }
 
-  $(window).scroll(function(){
-    $(".form").toggleClass("scrolling", $(window).scrollTop() > $(".header").offset().top);
-    $("#buttons").toggleClass("scrolling2", $(window).scrollTop() > $(".header").offset().top);
-  });
+  // $(window).scroll(function(){
+  //   $(".form").toggleClass("scrolling", $(window).scrollTop() > $(".header").offset().top);
+  //   $("#buttons").toggleClass("scrolling2", $(window).scrollTop() > $(".header").offset().top);
+  // }); // fixed with position: sticky, WAY more simple.
 
 
   $("#add-gifs").on("click", function(event) {
