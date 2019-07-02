@@ -4,6 +4,8 @@ var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + gifs + "&api_key=BkaU
 var gifs = ["matrix", "car", "simpsons", "storm trooper", "thomas-train", "catdog", "panic", "clown", "van", "chris farley"];
 var numGifs = gifs.length
 
+var display = false;
+
 function displayPics() {
 
     var gif = $(this).attr("data-name")
@@ -86,18 +88,38 @@ $("#gifs-go-here").on("click", ".gif", function() {
 
     for (var i = 0; i < gifs.length; i++) {
 
-
+      var wrap = $("<div>;")
       var a = $("<button>");
-
+      var fav = $("<div>");
+      wrap.addClass("wrapper")
       a.addClass("gifButton");
  
       a.attr("data-name", gifs[i]);
  
       a.text(gifs[i]);
 
-      $("#buttons").append(a);
+      fav.text("+")
+
+      fav.addClass("favorite")
+
+      wrap.prepend(fav,a)
+
+      $("#buttons").append(wrap);
+
+      $(".favorite").hide()
     }
   }
+
+  $("#favtitle").on("click", function(){
+    $(".favorite").toggle(display);
+    if (display === false) {
+      display = true
+      $(".favorite").show();
+    } else if (display === true) {
+      display = false
+      $(".favorite").hide();
+    }
+  })
 
   // $(window).scroll(function(){
   //   $(".form").toggleClass("scrolling", $(window).scrollTop() > $(".header").offset().top);
@@ -107,10 +129,24 @@ $("#gifs-go-here").on("click", ".gif", function() {
 
   $("#add-gifs").on("click", function(event) {
     event.preventDefault(); 
-    var image = $("#search").val().trim();   
+    var image = $("#search").val().trim();
+    if (gifs.includes(image)) {
+      document.getElementById("searchLabel").innerHTML = "Topic already exists!"
+      setTimeout(function(){
+        document.getElementById("searchLabel").innerHTML = "Add a new topic! &rarr;"
+        }, 1000)
+      return; 
+    } else if (image === "") {
+      document.getElementById("searchLabel").innerHTML = "Can't be blank!"
+      setTimeout(function(){
+        document.getElementById("searchLabel").innerHTML = "Add a new topic! &rarr;"
+        }, 1000)
+      return;
+    } else {  
     console.log(image)
     gifs.push(image);
     renderButtons();
+  }
   });
 
   $(document).on("click", ".gifButton", displayPics);

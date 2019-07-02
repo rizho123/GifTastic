@@ -55,8 +55,11 @@ button:focus, input:focus {
   0% {
     box-shadow: 0 0 0 0px rgba(0, 0, 0, 0.1);
   }
+  50% {
+    box-shadow: 0 0 7px 10px rgba(229, 255, 0, 0.63);
+  }
   100% {
-    box-shadow: 0 0 0 70px rgba(0, 0, 0, 0);
+    box-shadow: 0 0 7px 30px rgba(0, 0, 0, 0);
   }
 }
 
@@ -79,6 +82,28 @@ button:focus, input:focus {
   }
   100% {
     box-shadow: 0 0 10px 2px rgb(255, 0, 0);
+  }
+}
+
+@keyframes glow-rgbtxt
+{
+  0% {
+    text-shadow: 0 0 10px rgb(255, 0, 0);
+  }
+  20% {
+    text-shadow: 0 0 10px rgb(21, 255, 0);
+  }
+  40% {
+    text-shadow: 0 0 10px rgb(25, 0, 255);
+  }
+  60% {
+    text-shadow: 0 0 10px rgb(255, 0, 242);
+  }
+  80% {
+    text-shadow: 0 0 10px rgb(238, 255, 0);
+  }
+  100% {
+    text-shadow: 0 0 10px rgb(255, 0, 0);
   }
 }
 
@@ -135,6 +160,12 @@ h1 {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     text-shadow: 0 0 12px #ff009d6e;
+}
+
+
+.searchbar {
+    width: 100%;
+    max-width: 1000px;
 }
 
 .gifButton, #clearbutton, #add-gifs, #clearsubmit, #search {
@@ -200,7 +231,7 @@ h1 {
     animation: pulse 0.5s infinite;
 }
 
-#add-gifs:hover, #search:hover, #clearsubmit:hover {
+#add-gifs:hover, #search:hover, #clearsubmit:hover, #favtitle:hover {
     box-shadow: 0 0 7px #000000;
 }
 
@@ -275,12 +306,16 @@ h6 {
     width: 100%;
 }
 
-.header, .maincontent {
+.header, .maincontent, .fav {
     position: sticky;
 }
 
 .header {
     top: 0;
+}
+
+.fav {
+    top: 40px;
 }
 
 .maincontent {
@@ -292,3 +327,39 @@ h6 {
     display: table;
     clear: both;
 }
+
+.wrapper, .favorite {
+    display: inline-block;
+}
+
+.favorite {
+    border-radius: 10px;
+    padding-left: 1px;
+    padding-right: 1px;
+    color: #575555;
+}
+
+.favorite:hover {
+    cursor: pointer;
+    animation: glow-rgbtxt 5s infinite;
+}
+
+/* #favtitle {
+    text-align: left;
+    width: 100%;
+    max-width: 75px;
+    sborder: 1px solid #000000;
+    border-radius: 7px;
+    padding: 5px;
+    background-color: #fffb009a;
+    font-family: Molengo;
+    font-weight: bold;
+    transition: 0.5s;
+}
+
+#favtitle:hover {
+    cursor: pointer;
+    background-color: #ffa600;
+} */
+
+
