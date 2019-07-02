@@ -198,7 +198,7 @@ h1 {
 }
 
 #clearbutton {
-    border: 1px solid #000000;
+    border: 1px solid #0000005b;
     background-color: #ffffffd2;
     margin-top: 2%;
     margin-bottom: 3%;
@@ -259,7 +259,7 @@ footer {
     position: fixed;
     bottom: 0;
     text-align: center;
-    color: white;
+    color: rgba(255, 255, 255, 0.61);
     font-size: 20px;
 }
 
@@ -332,14 +332,14 @@ h6 {
     display: inline-block;
 }
 
-.favorite {
+.favorite, #removeFav {
     border-radius: 10px;
     padding-left: 1px;
     padding-right: 1px;
     color: #575555;
 }
 
-.favorite:hover {
+.favorite:hover, #removeFav:hover {
     cursor: pointer;
     animation: glow-rgbtxt 5s infinite;
 }

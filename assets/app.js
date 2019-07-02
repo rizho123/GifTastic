@@ -4,7 +4,8 @@ var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + gifs + "&api_key=BkaU
 var gifs = ["matrix", "car", "simpsons", "storm trooper", "thomas-train", "catdog", "panic", "clown", "van", "chris farley"];
 var numGifs = gifs.length
 
-var display = false;
+//var display = false;
+
 
 function displayPics() {
 
@@ -83,7 +84,6 @@ $("#gifs-go-here").on("click", ".gif", function() {
 
   function renderButtons() {
 
-
     $("#buttons").empty();
 
     for (var i = 0; i < gifs.length; i++) {
@@ -107,18 +107,42 @@ $("#gifs-go-here").on("click", ".gif", function() {
       $("#buttons").append(wrap);
 
       $(".favorite").hide()
+      // display = false
     }
+    $(".favorite").on("click", function(){
+    
+      var faValue = $(this).siblings("button").attr("data-name")
+      var remove = $("<div>")
+      var wrap = $("<div>")
+      console.log(this)
+      console.log(faValue)
+      localStorage.setItem("FavTitle", faValue)
+      remove.text("-")
+      remove.attr("id", "removeFav")
+      wrap.addClass("removeWrap")
+      $(this).siblings("button").clone().appendTo(wrap)
+      wrap.prepend(remove)
+      $("#favlist").append(wrap)
+      
+      $("#removeFav").click(function(){
+        $(this).closest(".removeWrap").remove()
+        console.log("This: " + this)
+      })
+    })
   }
 
+  
+
   $("#favtitle").on("click", function(){
-    $(".favorite").toggle(display);
-    if (display === false) {
-      display = true
-      $(".favorite").show();
-    } else if (display === true) {
-      display = false
-      $(".favorite").hide();
-    }
+    $(".favorite").toggle();
+    
+    // if (display === false) {
+    //   display = true
+    //   $(".favorite").show();
+    // } else if (display === true) {
+    //   display = false
+    //   $(".favorite").hide();
+    // }
   })
 
   // $(window).scroll(function(){
@@ -143,7 +167,7 @@ $("#gifs-go-here").on("click", ".gif", function() {
         }, 1000)
       return;
     } else {  
-    console.log(image)
+    console.log("Gif name: "+image)
     gifs.push(image);
     renderButtons();
   }
@@ -152,3 +176,12 @@ $("#gifs-go-here").on("click", ".gif", function() {
   $(document).on("click", ".gifButton", displayPics);
 
   renderButtons();
+  $(".favorite").hide();
+  // $(".favorite").on("click", function(){
+    
+  //   var sample = $(this).siblings("button").attr("data-name")
+
+  //   console.log(this)
+  //   console.log(sample)
+  // })
+  var favorites = JSON.parse(localStorage.getItem("favorites")) || [];
