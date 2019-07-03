@@ -3,7 +3,7 @@ var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + gifs + "&api_key=BkaU
 
 var gifs = ["matrix", "car", "simpsons", "storm trooper", "thomas-train", "catdog", "panic", "clown", "van", "chris farley"];
 var numGifs = gifs.length
-
+var favorites = [];
 //var display = false;
 
 
@@ -42,6 +42,8 @@ function displayPics() {
 
 };
 
+
+
 $("#gifs-go-here").on("click", ".gif", function() {
     console.log("CLICKED")
     console.log("1This: " + this)
@@ -72,6 +74,16 @@ $("#gifs-go-here").on("click", ".gif", function() {
      
     //   console.log("this: " + this)
   });
+
+  $("div").on("click", "div.removeFav", function(){
+    $(this).closest(".removeWrap").remove()
+    var dataVal = $(this).siblings("button").attr("data-name")
+    localStorage.getItem("Favorites", JSON.stringify(favorites))
+    favorites.splice($.inArray(dataVal,favorites),1)
+    localStorage.setItem("Favorites", JSON.stringify(favorites))
+    console.log("dataVal" + dataVal)
+    console.log("array: " + favorites)
+  })
 
   $("#clearbutton").on("click", function(){
       $("#gifs-go-here").empty();
@@ -108,29 +120,31 @@ $("#gifs-go-here").on("click", ".gif", function() {
 
       $(".favorite").hide()
       // display = false
+      
     }
-    $(".favorite").on("click", function(){
+
+
     
-      var faValue = $(this).siblings("button").attr("data-name")
+    $(".favorite").on("click", function(){
       var remove = $("<div>")
       var wrap = $("<div>")
+      var faValue = $(this).siblings("button").attr("data-name")
       console.log(this)
       console.log(faValue)
-      localStorage.setItem("FavTitle", faValue)
-      remove.text("-")
+      localStorage.getItem("Favorites", JSON.stringify(favorites))
+      favorites.push(faValue)
+      localStorage.setItem("Favorites", JSON.stringify(favorites))
+      $(this).siblings("button").addClass("favButton")
+      remove.text("x")
+      remove.addClass("removeFav")
       remove.attr("id", "removeFav")
       wrap.addClass("removeWrap")
       $(this).siblings("button").clone().appendTo(wrap)
       wrap.prepend(remove)
       $("#favlist").append(wrap)
-      
-      $("#removeFav").click(function(){
-        $(this).closest(".removeWrap").remove()
-        console.log("This: " + this)
-      })
+      console.log("favArraypush: " + favorites)
     })
   }
-
   
 
   $("#favtitle").on("click", function(){
@@ -184,4 +198,28 @@ $("#gifs-go-here").on("click", ".gif", function() {
   //   console.log(this)
   //   console.log(sample)
   // })
-  var favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+
+  $(document).ready(function(){
+    console.log("Initial: " + favorites)
+    var localStor = JSON.parse(localStorage.getItem("Favorites"))
+    console.log("parse: " + localStor)
+    console.log("Doc Ready Array: " + favorites)
+    for (var i = 0; i < localStor.length; i++) {
+    //var faValue = $(this).siblings("button").attr("data-name")
+    favorites.push(localStor[i])
+    var remove = $("<div>")
+    var wrap = $("<div>")
+    var button = $("<button>")
+    button.addClass("gifButton favButton")
+    button.attr("data-name", favorites[i])
+    button.text(favorites[i])
+    remove.text("x")
+    remove.addClass("removeFav")
+    remove.attr("id", "removeFav")
+    wrap.addClass("removeWrap")
+    $(this).siblings("button").clone().appendTo(wrap)
+    wrap.prepend(remove,button)
+    $("#favlist").append(wrap)
+    console.log("favArraypush: " + favorites[i])
+    }
+  })

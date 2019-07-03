@@ -11,9 +11,10 @@ button:focus, input:focus {
 }
 
 .container { 
-    margin-left: 5%;
-    margin-right: 5%;
+    margin-left: 3%;
+    margin-right: 3%;
     margin-top: 2%;
+    margin-bottom: 2%;
     text-align: center;
     height: 100%;
 }
@@ -85,6 +86,27 @@ button:focus, input:focus {
   }
 }
 
+@keyframes bg-rgb
+{
+    0% {
+      background-color: rgb(255, 0, 0);
+    }
+    20% {
+      background-color: rgb(21, 255, 0);
+    }
+    40% {
+      background-color: rgb(25, 0, 255);
+    }
+    60% {
+      background-color: rgb(255, 0, 242);
+    }
+    80% {
+      background-color: rgb(238, 255, 0);
+    }
+    100% {
+      background-color: rgb(255, 0, 0);
+    }
+  }
 @keyframes glow-rgbtxt
 {
   0% {
@@ -168,6 +190,11 @@ h1 {
     max-width: 1000px;
 }
 
+#search {
+    width: 100%;
+    max-width: 170px;
+}
+
 .gifButton, #clearbutton, #add-gifs, #clearsubmit, #search {
     border: none;
     border-radius: 15px;
@@ -215,11 +242,10 @@ h1 {
 }
 
 #clearbutton:hover {
-    background-color: #ff0000;
+    background-color: #ff000080;
     color: #ffffff;
     transition: 0.5s;
     cursor: pointer;
-    box-shadow: 0 0 7px #ff0000;
 }
 
 #clearbutton:active, .gifButton:active {
@@ -306,7 +332,7 @@ h6 {
     width: 100%;
 }
 
-.header, .maincontent, .fav {
+.header, .fav {
     position: sticky;
 }
 
@@ -318,17 +344,13 @@ h6 {
     top: 40px;
 }
 
-.maincontent {
-    top: 100px;
-}
-
 .clearfix:after {
     content: "";
     display: table;
     clear: both;
 }
 
-.wrapper, .favorite {
+.wrapper, .favorite, .removeWrap, .removeFav {
     display: inline-block;
 }
 
@@ -344,22 +366,33 @@ h6 {
     animation: glow-rgbtxt 5s infinite;
 }
 
-/* #favtitle {
+#favtitle {
     text-align: left;
     width: 100%;
-    max-width: 75px;
+    max-width: 66px;
     sborder: 1px solid #000000;
-    border-radius: 7px;
-    padding: 5px;
-    background-color: #fffb009a;
+    border-radius: 15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 14px;
+    background-color: #88ff0071;
     font-family: Molengo;
     font-weight: bold;
+    font-size: 14px;
     transition: 0.5s;
 }
 
 #favtitle:hover {
     cursor: pointer;
     background-color: #ffa600;
-} */
+}
 
+.favButton {
+    background-color: #00ff6280;
+    color: #000000;
+}
+
+.favButton:hover {
+    animation: bg-rgb glow-rgb 5s infinite;
+}
 
