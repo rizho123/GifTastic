@@ -372,12 +372,12 @@ h6 {
     text-align: left;
     width: 100%;
     max-width: 66px;
-    sborder: 1px solid #000000;
+    box-shadow: 0 0 4px #88ff009a;
     border-radius: 15px;
     padding-top: 10px;
     padding-bottom: 10px;
     padding-left: 14px;
-    background-color: #88ff0071;
+    background-color: #88ff009a;
     font-family: Molengo;
     font-weight: bold;
     font-size: 14px;
@@ -390,7 +390,8 @@ h6 {
 }
 
 .favButton {
-    background-color: #00ff6280;
+    background-color: #00ff62a2;
+    box-shadow: 0 0 6px #00ff628a;
     color: #000000;
 }
 
