@@ -338,10 +338,12 @@ h6 {
 
 .header {
     top: 0;
+    min-width: 471.9px;
 }
 
 .fav {
-    top: 40px;
+    top: 80px;
+    z-index: 1;
 }
 
 .clearfix:after {
@@ -396,3 +398,9 @@ h6 {
     animation: bg-rgb glow-rgb 5s infinite;
 }
 
+@media screen and (max-width: 685px) {
+    .header {
+        width: 100%;
+        width: 471.9px;
+    }
+}
